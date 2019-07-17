@@ -1,0 +1,18 @@
+from rest_framework import serializers
+
+from .models import Event, Staff
+
+
+class EventSerializer(serializers.HyperlinkedModelSerializer):
+
+    class Meta:
+        model = Event
+        fields = '__all__'
+
+
+
+
+
+
+
+
