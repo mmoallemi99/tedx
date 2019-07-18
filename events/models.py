@@ -30,7 +30,7 @@ class Staff(models.Model):
     role = models.CharField(choices=team_role_choices, max_length=30,
                             help_text='team\'s way of association in team', default='others')
 
-    bio = models.TextField(help_text='description about person e.g. role in team achievements')
+    bio = models.TextField(blank=True, null=True, help_text='description about person e.g. role in team achievements')
     picture = models.ImageField(upload_to='pics/team/', help_text='team\'s picture')
     linkedin_account = models.CharField(max_length=100, null=True, blank=True,
                                         help_text='linkedin.com/in/[User_Account]')
