@@ -11,16 +11,14 @@ class Event(models.Model):
     year = models.IntegerField(default=timezone.now().year, choices=YEAR_CHOICES,
                                null=True, blank=True,
                                help_text='year that event is being held')
-    slug = models.SlugField(help_text='link to event', unique=True)
 
     def __str__(self):
-        return self.slug
+        return self.name
 
 
 class Staff(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     name = models.CharField(max_length=30, help_text='staff\'s full name', verbose_name='full name')
-    slug = models.SlugField(help_text='link to team bio')
 
     team_role_choices = [('arrangement', 'Arrangement'),
                          ('designer', 'Designer'),

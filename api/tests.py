@@ -2,7 +2,7 @@ from rest_framework.test import APIClient
 from rest_framework import status
 
 from django.test import TestCase
-from django.urls import reverse
+from rest_framework.reverse import reverse as api_reverse
 
 from events.models import Event
 
@@ -16,10 +16,9 @@ class EventViewSetTest(TestCase):
     def test_can_retrieve_event(self):
         event = Event.objects.get()
         response = self.client.get(
-            reverse('api:event'),
-            kwargs={
-                'id': event.id,
-            },
+            api_reverse('api:event-detail', kwargs={
+                'pk': event.id,
+            }),
             format='json'
         )
 
