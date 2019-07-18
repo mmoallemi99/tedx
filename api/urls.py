@@ -7,8 +7,8 @@ from .views import EventViewSet, StaffViewSet
 app_name = 'api'
 
 router = routers.DefaultRouter()
-router.register(r'event', EventViewSet)
-router.register(r'staff', StaffViewSet)
+router.register(r'events', EventViewSet)
+router.register(r'staffs', StaffViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

@@ -4,6 +4,7 @@ from django.utils import timezone
 
 
 class Event(models.Model):
+
     YEAR_CHOICES = []
     for i in range(2019, timezone.now().year + 5):
         YEAR_CHOICES.append((i, i))
