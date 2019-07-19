@@ -9,14 +9,19 @@ from rest_framework.reverse import reverse as api_reverse
 
 from .utils import test_image_generator
 
-from events.models import Event, Staff
+from events.models import (
+    Event,
+    Staff,
+    Speaker,
+)
 
 
 class EventViewSetUnitTest(APITestCase):
 
     def setUp(self):
-        self.event = Event.objects.create(name='TEDx UI 2019')
         self.client = APIClient()
+
+        self.event = Event.objects.create(name='TEDx UI 2019')
 
     def test_can_retrieve_event(self):
         event = Event.objects.get()
@@ -34,12 +39,13 @@ class EventViewSetUnitTest(APITestCase):
 class EventAPIClientTest(APILiveServerTestCase):
 
     def setUp(self):
+        self.client = RequestsClient()
+
         self.event = Event.objects.create(
             name='TEDx 2019',
             year=2019,
         )
 
-        self.client = RequestsClient()
         response = self.client.get(self.live_server_url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
@@ -61,21 +67,16 @@ class EventAPIClientTest(APILiveServerTestCase):
 class StaffViewSetClientTest(APITestCase):
 
     def setUp(self):
-        self.event = Event.objects.create(name='TEDx 2019')
+        self.client = APIClient()
 
-        from PIL import Image
-        from io import BytesIO
-        tmp_file = BytesIO(b'fake file stream for test')
-        image = Image.new('RGB', (10, 10))
-        temp_file = image.save(tmp_file, format='png')
+        self.event = Event.objects.create(name='TEDx 2019')
+        image = test_image_generator()
         self.staff = Staff.objects.create(
             event=self.event,
             name='Mohammad Moallemi',
             role='programmer',
-            picture=temp_file,
+            picture=image,
         )
-
-        self.client = APIClient()
 
     def test_can_retrieve_staff(self):
         staff = Staff.objects.get()
@@ -91,8 +92,9 @@ class StaffViewSetClientTest(APITestCase):
 class StaffAPIClientTest(APILiveServerTestCase):
 
     def setUp(self):
-        self.event = Event.objects.create(name='TEDx 2019')
+        self.client = RequestsClient()
 
+        self.event = Event.objects.create(name='TEDx 2019')
         image = test_image_generator()
         self.staff = Staff.objects.create(
             event=self.event,
@@ -101,7 +103,6 @@ class StaffAPIClientTest(APILiveServerTestCase):
             picture=image,
         )
 
-        self.client = RequestsClient()
         response = self.client.get(self.live_server_url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
@@ -124,3 +125,29 @@ class StaffAPIClientTest(APILiveServerTestCase):
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertIn(valid_staff_data, response.json())
+
+
+class SpeakerViewSetTest(APITestCase):
+
+    def setUp(self):
+        self.client = APIClient()
+
+        self.event = Event.objects.create(name='TEDx 2019')
+        image = test_image_generator()
+        self.speaker = Speaker.objects.create(
+            event=self.event,
+            name='Masoud Algooneh',
+        )
+
+    def test_can_retrieve_speakers(self):
+        speaker = Speaker.objects.get()
+        response = self.client.get(
+            api_reverse('api:speaker-detail', kwargs={
+                'pk': speaker.id,
+            }),
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertContains(response, speaker)
+
+

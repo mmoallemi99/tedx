@@ -1,16 +1,19 @@
 from rest_framework import serializers
 
-from .models import Event, Staff
+from .models import (
+    Event,
+    Staff,
+    Speaker,
+)
 
 
 class StaffSerializer(serializers.HyperlinkedModelSerializer):
     url = serializers.HyperlinkedIdentityField(
         view_name='api:staff-detail',
-        lookup_field='pk',
     )
     event = serializers.HyperlinkedRelatedField(
         view_name='api:event-detail',
-        lookup_field='pk', read_only=True
+        read_only=True
     )
 
     class Meta:
@@ -18,20 +21,28 @@ class StaffSerializer(serializers.HyperlinkedModelSerializer):
         fields = '__all__'
 
 
+class SpeakerSerializer(serializers.HyperlinkedModelSerializer):
+    url = serializers.HyperlinkedIdentityField(
+        view_name='api:speaker-detail',
+    )
+    event = serializers.HyperlinkedRelatedField(
+        view_name='api:event-detail',
+        read_only=True,
+    )
+
+    class Meta:
+        model = Speaker
+        fields = '__all__'
+
+
 class EventSerializer(serializers.HyperlinkedModelSerializer):
     url = serializers.HyperlinkedIdentityField(
         view_name='api:event-detail',
-        lookup_field='pk',
     )
     staff_set = StaffSerializer(many=True, read_only=True)
 
     class Meta:
         model = Event
-        fields = ('url',
-                  'name',
-                  'year',
-                  'staff_set', )
-
-
+        fields = '__all__'
 
 
