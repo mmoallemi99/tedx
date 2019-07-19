@@ -18,15 +18,6 @@ class EventViewSetUnitTest(APITestCase):
         self.event = Event.objects.create(name='TEDx UI 2019')
         self.client = APIClient()
 
-    def tearDown(self):
-        event_objects = Event.objects.all()
-        for obj in event_objects:
-            obj.delete()
-
-        staff_objects = Staff.objects.all()
-        for obj in staff_objects:
-            obj.delete()
-
     def test_can_retrieve_event(self):
         event = Event.objects.get()
         response = self.client.get(
@@ -51,11 +42,6 @@ class EventAPIClientTest(APILiveServerTestCase):
         self.client = RequestsClient()
         response = self.client.get(self.live_server_url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-    def tearDown(self):
-        event_objects = Event.objects.all()
-        for obj in event_objects:
-            obj.delete()
 
     def test_api_can_retrieve_events(self):
         events_url = self.live_server_url + '/events/'
@@ -91,15 +77,6 @@ class StaffViewSetClientTest(APITestCase):
 
         self.client = APIClient()
 
-    def tearDown(self):
-        event_objects = Event.objects.all()
-        for obj in event_objects:
-            obj.delete()
-
-        staff_objects = Staff.objects.all()
-        for obj in staff_objects:
-            obj.delete()
-
     def test_can_retrieve_staff(self):
         staff = Staff.objects.get()
         response = self.client.get(
@@ -127,15 +104,6 @@ class StaffAPIClientTest(APILiveServerTestCase):
         self.client = RequestsClient()
         response = self.client.get(self.live_server_url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-    def tearDown(self):
-        event_objects = Event.objects.all()
-        for obj in event_objects:
-            obj.delete()
-
-        staff_objects = Staff.objects.all()
-        for obj in staff_objects:
-            obj.delete()
 
     def test_api_can_retrieve_staffs(self):
         staff_url = self.live_server_url + '/staffs/'
