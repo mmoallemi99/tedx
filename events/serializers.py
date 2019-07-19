@@ -8,9 +8,9 @@ class StaffSerializer(serializers.HyperlinkedModelSerializer):
         view_name='api:staff-detail',
         lookup_field='pk',
     )
-    event = serializers.HyperlinkedIdentityField(
+    event = serializers.HyperlinkedRelatedField(
         view_name='api:event-detail',
-        lookup_field='pk',
+        lookup_field='pk', read_only=True
     )
 
     class Meta:
