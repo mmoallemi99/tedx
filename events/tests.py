@@ -4,13 +4,13 @@ from .models import (
     Event,
     Staff,
     Speaker,
+    Sponsor,
 )
 
 
 # Event
 # Event --> Staff
 # Event --> Speaker
-
 # Event --> Sponsor
 # Event --> Sponsor --> Register Form
 
@@ -50,4 +50,17 @@ class SpeakerModelTest(TestCase):
 
         self.assertEqual(new_event, saved_event)
         self.assertEqual(new_speaker, saved_speaker)
+
+
+class SponsorModelTest(TestCase):
+
+    def test_saving_and_retrieving_sponsor(self):
+        new_event = Event.objects.create(name='TEDx 2019')
+        new_sponsor = Sponsor.objects.create(event=new_event, name='Learnevents')
+
+        saved_event = Event.objects.first()
+        saved_sponsor = Sponsor.objects.first()
+
+        self.assertEqual(new_event, saved_event)
+        self.assertEqual(new_sponsor, saved_sponsor)
 

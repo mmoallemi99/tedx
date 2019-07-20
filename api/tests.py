@@ -8,12 +8,14 @@ from rest_framework import status
 from rest_framework.reverse import reverse as api_reverse
 
 from .utils import test_image_generator
-
 from events.models import (
     Event,
     Staff,
     Speaker,
+    Sponsor,
 )
+
+MAX_OBJECTS = 5
 
 
 class EventViewSetUnitTest(APITestCase):
@@ -36,7 +38,7 @@ class EventViewSetUnitTest(APITestCase):
         self.assertContains(response, event)
 
 
-class EventAPIClientTest(APILiveServerTestCase):
+class EventAPIConsumerTest(APILiveServerTestCase):
 
     def setUp(self):
         self.client = RequestsClient()
@@ -64,7 +66,7 @@ class EventAPIClientTest(APILiveServerTestCase):
         self.assertIn(valid_event_data, response.json())
 
 
-class StaffViewSetClientTest(APITestCase):
+class StaffViewSetUnitTest(APITestCase):
 
     def setUp(self):
         self.client = APIClient()
@@ -89,19 +91,20 @@ class StaffViewSetClientTest(APITestCase):
         self.assertContains(response, staff)
 
 
-class StaffAPIClientTest(APILiveServerTestCase):
+class StaffAPIConsumerTest(APILiveServerTestCase):
 
     def setUp(self):
         self.client = RequestsClient()
 
         self.event = Event.objects.create(name='TEDx 2019')
         image = test_image_generator()
-        self.staff = Staff.objects.create(
-            event=self.event,
-            name='Mohammad Moallemi',
-            role='programmer',
-            picture=image,
-        )
+        for _ in range(MAX_OBJECTS):
+            self.staff = Staff.objects.create(
+                event=self.event,
+                name='Mohammad Moallemi',
+                role='programmer',
+                picture=image,
+            )
 
         response = self.client.get(self.live_server_url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -123,11 +126,14 @@ class StaffAPIClientTest(APILiveServerTestCase):
             'github_account': None,
         }
 
+        json_data = response.json()
+        self.assertEqual(len(json_data), MAX_OBJECTS)
+
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertIn(valid_staff_data, response.json())
 
 
-class SpeakerViewSetTest(APITestCase):
+class SpeakerViewSetUnitTest(APITestCase):
 
     def setUp(self):
         self.client = APIClient()
@@ -150,4 +156,64 @@ class SpeakerViewSetTest(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertContains(response, speaker)
 
+
+class SpeakerAPIConsumerTest(APILiveServerTestCase):
+
+    def setUp(self):
+        self.client = RequestsClient()
+
+        self.event = Event.objects.create(name='TEDx 2019')
+        for _ in range(MAX_OBJECTS):
+            self.speaker = Speaker.objects.create(event=self.event)
+
+    def test_api_can_retrieve_speakers(self):
+        speakers_url = self.live_server_url + '/speakers/'
+        client = self.client
+        response = client.get(speakers_url)
+        json_data = response.json()
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(json_data), MAX_OBJECTS)
+
+
+class SponsorViewSetUnitTest(APITestCase):
+
+    def setUp(self):
+        self.client = APIClient()
+
+        self.event = Event.objects.create(name='TEDx 2019')
+        self.sponsor = Sponsor.objects.create(
+            event=self.event,
+            name='Learnevents',
+        )
+
+    def test_can_retrieve_sponsor(self):
+        sponsor = Sponsor.objects.get()
+        response = self.client.get(
+            api_reverse('api:sponsor-detail', kwargs={
+                'pk': sponsor.id,
+            }),
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertContains(response, sponsor)
+
+
+class SponsorAPIConsumerTest(APILiveServerTestCase):
+
+    def setUp(self):
+        self.client = RequestsClient()
+
+        self.event = Event.objects.create(name='TEDx 2019')
+        for _ in range(MAX_OBJECTS):
+            self.sponsor = Sponsor.objects.create(event=self.event)
+
+    def test_api_can_retrieve_sponsors(self):
+        sponsors_url = self.live_server_url + '/sponsors/'
+        client = self.client
+        response = client.get(sponsors_url)
+        json_data = response.json()
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(json_data), MAX_OBJECTS)
 

@@ -4,11 +4,13 @@ from events.serializers import (
     EventSerializer,
     StaffSerializer,
     SpeakerSerializer,
+    SponsorSerializer,
 )
 from events.models import (
     Event,
     Staff,
     Speaker,
+    Sponsor,
 )
 
 
@@ -25,4 +27,9 @@ class StaffViewSet(viewsets.ModelViewSet):
 class SpeakerViewSet(viewsets.ModelViewSet):
     queryset = Speaker.objects.all()
     serializer_class = SpeakerSerializer
+
+
+class SponsorViewSet(viewsets.ModelViewSet):
+    queryset = Sponsor.objects.all()
+    serializer_class = SponsorSerializer
 

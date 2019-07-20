@@ -62,3 +62,33 @@ class Speaker(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Sponsor(models.Model):
+    event = models.ForeignKey(Event,
+                                   on_delete=models.CASCADE,
+                                   help_text='Choose Your Event:')
+
+    sponsor_type_choices = [('financial', 'Financial'),
+                            ('spiritual', 'Spiritual'),
+                            ('other', 'Other'), ]
+
+    STATUS_CHOICES = [
+        ('active', 'Active'),
+        ('deactive', 'Deactive'),
+    ]
+
+    sponsor_organization = models.CharField(max_length=50, help_text='sponsor company')
+    name = models.CharField(max_length=50, help_text='sponsor person')
+    sponsor_type = models.CharField(choices=sponsor_type_choices, default='other',
+                                    help_text='type of support', max_length=30)
+    phone_number = PhoneNumberField()
+    email = models.EmailField()
+    about = models.TextField(max_length=1000, help_text='about sponsor')
+    logo = models.ImageField(upload_to='pics/sponsors/', help_text='company\'s logo',
+                             default='default.jpg')
+    account_status = models.CharField(choices=STATUS_CHOICES,
+                                      default='deactive', max_length=20)
+
+    def __str__(self):
+        return self.sponsor_organization

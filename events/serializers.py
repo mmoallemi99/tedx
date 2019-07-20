@@ -4,6 +4,7 @@ from .models import (
     Event,
     Staff,
     Speaker,
+    Sponsor,
 )
 
 
@@ -32,6 +33,20 @@ class SpeakerSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Speaker
+        fields = '__all__'
+
+
+class SponsorSerializer(serializers.HyperlinkedModelSerializer):
+    url = serializers.HyperlinkedIdentityField(
+        view_name='api:sponsor-detail',
+    )
+    event = serializers.HyperlinkedRelatedField(
+        view_name='api:event-detail',
+        read_only=True,
+    )
+
+    class Meta:
+        model = Sponsor
         fields = '__all__'
 
 
