@@ -166,6 +166,18 @@ class SpeakerAPIConsumerTest(APILiveServerTestCase):
         for _ in range(MAX_OBJECTS):
             self.speaker = Speaker.objects.create(event=self.event)
 
+    def test_api_can_create_sponsor(self):
+        speakers_url = self.live_server_url + '/speakers/'
+        data = {
+            "name": "Masoud Algoone",
+            "email": "masoudalgoone@gmail.com",
+            "phone_number": "09375178053",
+            "professions": "Guide Them All",
+        }
+        response = self.client.post(speakers_url, data)
+
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
     def test_api_can_retrieve_speakers(self):
         speakers_url = self.live_server_url + '/speakers/'
         client = self.client
@@ -216,4 +228,3 @@ class SponsorAPIConsumerTest(APILiveServerTestCase):
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(json_data), MAX_OBJECTS)
-
