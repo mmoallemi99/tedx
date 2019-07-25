@@ -19,8 +19,7 @@ class Event(models.Model):
 
 class Staff(models.Model):
     event = models.ForeignKey(Event,
-                              on_delete=models.CASCADE,
-                              default=Event.objects.first())
+                              on_delete=models.CASCADE, )
     name = models.CharField(max_length=30, help_text='staff\'s full name', verbose_name='full name')
 
     team_role_choices = [('arrangement', 'Arrangement'),
@@ -46,8 +45,7 @@ class Staff(models.Model):
 class Speaker(models.Model):
     event = models.ForeignKey(Event,
                               on_delete=models.CASCADE,
-                              help_text='Choose Your Event:',
-                              default=Event.objects.first())
+                              help_text='Choose Your Event:', )
 
     STATUS_CHOICES = [
         ('active', 'Active'),
@@ -59,7 +57,7 @@ class Speaker(models.Model):
                                 default='default.jpg')
     email = models.EmailField()
     phone_number = PhoneNumberField()
-    professions = models.TextField(max_length=500)
+    bio = models.TextField(max_length=500)
     account_status = models.CharField(choices=STATUS_CHOICES,
                                       default='deactive', max_length=20)
 
@@ -70,8 +68,7 @@ class Speaker(models.Model):
 class Sponsor(models.Model):
     event = models.ForeignKey(Event,
                               on_delete=models.CASCADE,
-                              help_text='Choose Your Event:',
-                              default=Event.objects.first())
+                              help_text='Choose Your Event:', )
 
     sponsor_type_choices = [('financial', 'Financial'),
                             ('spiritual', 'Spiritual'),
