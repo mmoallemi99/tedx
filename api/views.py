@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, views
 
 from events.serializers import (
     EventSerializer,
@@ -14,17 +14,19 @@ from events.models import (
 )
 
 
-class EventViewSet(viewsets.ModelViewSet):
+class EventViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
 
 
-class StaffViewSet(viewsets.ModelViewSet):
+class StaffViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Staff.objects.all()
     serializer_class = StaffSerializer
 
 
 class SpeakerViewSet(viewsets.ModelViewSet):
+    authentication_classes = []
+    permission_classes = []
     queryset = Speaker.objects.all()
     serializer_class = SpeakerSerializer
 
@@ -37,7 +39,7 @@ class SpeakerViewSet(viewsets.ModelViewSet):
         return qs
 
 
-class SponsorViewSet(viewsets.ModelViewSet):
+class SponsorViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Sponsor.objects.all()
     serializer_class = SponsorSerializer
 

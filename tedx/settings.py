@@ -142,3 +142,14 @@ PHONENUMBER_DEFAULT_REGION = 'IR'
 
 
 CORS_ORIGIN_ALLOW_ALL = True
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    )
+}
+
+CSRF_USE_SESSIONS = True
+# CSRF_COOKIE_AGE = None

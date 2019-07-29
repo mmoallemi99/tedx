@@ -147,6 +147,8 @@ class SpeakerViewSetUnitTest(APITestCase):
             event=self.event,
             first_name='Masoud',
             last_name='Algooneh',
+            email='malg@gmail.com',
+            bio='some text',
         )
 
     def test_can_retrieve_speakers(self):
@@ -158,6 +160,8 @@ class SpeakerViewSetUnitTest(APITestCase):
         )
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+        print(speaker)
+        print(response.data)
         self.assertContains(response, speaker)
 
 

@@ -1,5 +1,4 @@
 from rest_framework import serializers
-from phonenumber_field import serializerfields as phone_serializers
 
 from .models import (
     Event,
