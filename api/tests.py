@@ -75,7 +75,8 @@ class StaffViewSetUnitTest(APITestCase):
         image = test_image_generator()
         self.staff = Staff.objects.create(
             event=self.event,
-            name='Mohammad Moallemi',
+            first_name='Mohammad',
+            last_name='Moallemi',
             role='programmer',
             picture=image,
         )
@@ -101,7 +102,8 @@ class StaffAPIConsumerTest(APILiveServerTestCase):
         for _ in range(MAX_OBJECTS):
             self.staff = Staff.objects.create(
                 event=self.event,
-                name='Mohammad Moallemi',
+                first_name='Mohammad',
+                last_name='Moallemi',
                 role='programmer',
                 picture=image,
             )
@@ -117,7 +119,8 @@ class StaffAPIConsumerTest(APILiveServerTestCase):
         image = test_image_generator()
         valid_staff_data = {
             'url': 'http://testserver/staffs/' + str(self.staff.id) + '/',
-            'name': self.staff.name,
+            'first_name': self.staff.first_name,
+            'last_name': self.staff.last_name,
             'event': 'http://testserver/events/' + str(self.staff.event.id) + '/',
             'role': self.staff.role,
             'picture': image,
@@ -142,7 +145,8 @@ class SpeakerViewSetUnitTest(APITestCase):
         image = test_image_generator()
         self.speaker = Speaker.objects.create(
             event=self.event,
-            name='Masoud Algooneh',
+            first_name='Masoud',
+            last_name='Algooneh',
         )
 
     def test_can_retrieve_speakers(self):
@@ -169,10 +173,11 @@ class SpeakerAPIConsumerTest(APILiveServerTestCase):
     def test_api_can_create_sponsor(self):
         speakers_url = self.live_server_url + '/speakers/'
         data = {
-            "name": "Masoud Algoone",
+            "first_name": "Masoud",
+            "last_name": "Algoone",
             "email": "masoudalgoone@gmail.com",
             "phone_number": "09375178053",
-            "professions": "Guide Them All",
+            "bio": "Guide Them All",
         }
         response = self.client.post(speakers_url, data)
 

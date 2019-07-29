@@ -28,6 +28,14 @@ class SpeakerViewSet(viewsets.ModelViewSet):
     queryset = Speaker.objects.all()
     serializer_class = SpeakerSerializer
 
+    def get_queryset(self):
+        request = self.request
+        qs = Speaker.objects.all()
+        query = request.GET.get('status')
+        if query is not None:
+            qs = qs.filter(account_status__exact=query)
+        return qs
+
 
 class SponsorViewSet(viewsets.ModelViewSet):
     queryset = Sponsor.objects.all()

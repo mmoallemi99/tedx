@@ -25,7 +25,7 @@ SECRET_KEY = 'in25xnf3r9c4%nk=^*5u$o=%y#ukhb*il^f2t-h8+p9mg_u%n_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # 3rd Party Apps
     'rest_framework',
+    'corsheaders',
 
     # Project Apps
     'events',
@@ -54,6 +55,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'tedx.urls'
@@ -135,3 +139,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 PHONENUMBER_DB_FORMAT = 'NATIONAL'
 PHONENUMBER_DEFAULT_REGION = 'IR'
+
+
+CORS_ORIGIN_ALLOW_ALL = True

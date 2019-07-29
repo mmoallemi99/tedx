@@ -30,7 +30,7 @@ class StaffModelTest(TestCase):
 
     def test_saving_and_retrieving_staffs(self):
         new_event = Event.objects.create(name='TEDx UI 2019')
-        new_staff = Staff.objects.create(event=new_event, name='mohammad moallemi')
+        new_staff = Staff.objects.create(event=new_event, first_name='mohammad moallemi', last_name='mohammad moallemi')
 
         saved_event = Event.objects.first()
         saved_staff = Staff.objects.first()
@@ -43,7 +43,7 @@ class SpeakerModelTest(TestCase):
 
     def test_saving_and_retrieving_speakers(self):
         new_event = Event.objects.create(name='TEDx 2019')
-        new_speaker = Speaker.objects.create(event=new_event, name='Masoud Algoone')
+        new_speaker = Speaker.objects.create(event=new_event, first_name='Masoud Algoone', last_name='Masoud Algoone')
 
         saved_event = Event.objects.first()
         saved_speaker = Speaker.objects.first()

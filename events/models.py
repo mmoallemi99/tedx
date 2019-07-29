@@ -20,7 +20,8 @@ class Event(models.Model):
 class Staff(models.Model):
     event = models.ForeignKey(Event,
                               on_delete=models.CASCADE, )
-    name = models.CharField(max_length=30, help_text='staff\'s full name', verbose_name='full name')
+    first_name = models.CharField(max_length=30, verbose_name='first name')
+    last_name = models.CharField(max_length=30, verbose_name='last name')
 
     team_role_choices = [('arrangement', 'Arrangement'),
                          ('designer', 'Designer'),
@@ -39,30 +40,31 @@ class Staff(models.Model):
                                       help_text='github.com/[User_Account]')
 
     def __str__(self):
-        return self.name
+        return "{0} {1}".format(self.first_name, self.last_name)
 
 
 class Speaker(models.Model):
     event = models.ForeignKey(Event,
                               on_delete=models.CASCADE,
-                              help_text='Choose Your Event:', )
+                              help_text='Choose Your Event:', null=True, blank=True)
 
     STATUS_CHOICES = [
         ('active', 'Active'),
         ('deactive', 'Deactive'),
     ]
 
-    name = models.CharField(max_length=30)
+    first_name = models.CharField(max_length=30, verbose_name='first name')
+    last_name = models.CharField(max_length=30, verbose_name='last name')
     picture = models.ImageField(upload_to='pics/speakers/',
-                                default='default.jpg')
+                                default='default.jpg', null=True, blank=True)
     email = models.EmailField()
-    phone_number = PhoneNumberField()
+    phone_number = PhoneNumberField(null=True, blank=True)
     bio = models.TextField(max_length=500)
     account_status = models.CharField(choices=STATUS_CHOICES,
                                       default='deactive', max_length=20)
 
     def __str__(self):
-        return self.name
+        return "{0} {1}".format(self.first_name, self.last_name)
 
 
 class Sponsor(models.Model):
