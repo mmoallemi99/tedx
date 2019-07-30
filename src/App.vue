@@ -2,9 +2,21 @@
     <div>
         <nav class="mobile_nav">
             <ul class="mobile_nav_ul">
-                <li v-for="link in links">
-                    <img v-bind:alt="link.name" v-bind:src="link.icon" class="mobile_nav_img">
-                    <router-link v-bind:to="link.url">{{ link.name }}</router-link>
+                <li>
+                    <img alt="Home" src="./assets/images/home.svg" class="mobile_nav_img">
+                    <router-link to="/" v-on:click.native="close_nav">Home</router-link>
+                </li>
+                <li>
+                    <img alt="Team" src="./assets/images/team.svg" class="mobile_nav_img">
+                    <router-link to="/team" v-on:click.native="close_nav">Team</router-link>
+                </li>
+                <li>
+                    <img alt="Sponsors" src="./assets/images/sponsor.svg" class="mobile_nav_img">
+                    <router-link to="/sponsors" v-on:click.native="close_nav">Sponsors</router-link>
+                </li>
+                <li>
+                    <img alt="Nominate" src="./assets/images/nominate.svg" class="mobile_nav_img">
+                    <router-link to="/nominate" v-on:click.native="close_nav">Nominate</router-link>
                 </li>
                 <li id="close_nav" v-on:click="close_nav"> Close</li>
             </ul>
@@ -71,10 +83,10 @@
         data() {
             return {
                 links: [
-                    {url: "/", name: "Home", icon: "./assets/images/home.svg"},
-                    {url: "/team", name: "Team", icon: "./assets/images/team.svg"},
-                    {url: "/sponsors", name: "Sponsors", icon: "./assets/images/sponsors.svg"},
-                    {url: "/nominate", name: "Nominate", icon: "./assets/images/nominate.svg"},
+                    {url: "/", name: "Home",},
+                    {url: "/team", name: "Team",},
+                    {url: "/sponsors", name: "Sponsors",},
+                    {url: "/nominate", name: "Nominate",},
                 ],
                 pathname: this.$route.name,
                 mobile_nav_open: false,

@@ -13,7 +13,7 @@
     }
 
     .onlook-items {
-        grid-template-columns: 1fr 1fr !important;
+        grid-template-columns: 1fr !important;
         grid-template-areas: 'img1' 'span1' 'p1' 'img2' 'span2' 'p2' 'img3' 'span3' 'p3' 'img4' 'span4' 'p4' !important;
         width: 58%;
         left: 11.3%;

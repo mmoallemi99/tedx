@@ -36,8 +36,6 @@ class Staff(models.Model):
     picture = models.ImageField(upload_to='pics/team/', help_text='team\'s picture')
     linkedin_account = models.CharField(max_length=100, null=True, blank=True,
                                         help_text='linkedin.com/in/[User_Account]')
-    github_account = models.CharField(max_length=100, null=True, blank=True,
-                                      help_text='github.com/[User_Account]')
 
     def __str__(self):
         return "{0} {1}".format(self.first_name, self.last_name)

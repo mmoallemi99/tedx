@@ -192,12 +192,6 @@ label {
     width: 100%;
 }
 
-.people-member-social {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 25px;
-}
-
 .people span {
     font-family: "twcenmt" !important;
     font-size: 3rem;

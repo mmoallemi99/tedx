@@ -15,7 +15,6 @@ window.$ = require('jquery');
 window.JQuery = require('jquery');
 
 new Vue({
-  assetsPublicPath: '/vueapp/',
   router,
   render: h => h(App),
 }).$mount('#app');
