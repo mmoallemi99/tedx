@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'twcenmt';
+    src: url('./twcenmt.eot');
+    src: local('twcenmt'),
+    url('./twcenmt.woff') format('woff'),
+    url('./twcenmt.ttf') format('truetype');
+}
+
+.fontsforweb_fontid_13141 {
+    font-family: 'twcenmt' !important;
+}
+

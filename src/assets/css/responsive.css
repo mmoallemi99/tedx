@@ -1,0 +1,319 @@
+@media (max-width: 850px) {
+
+    .onelook {
+        font-size: 2rem;
+    }
+
+    .onlook-items span {
+        font-size: 1.7rem;
+    }
+
+    .onlook-items p {
+        font-size: 0.9rem;
+    }
+
+    .onlook-items {
+        grid-template-columns: 1fr 1fr !important;
+        grid-template-areas: 'img1' 'span1' 'p1' 'img2' 'span2' 'p2' 'img3' 'span3' 'p3' 'img4' 'span4' 'p4' !important;
+        width: 58%;
+        left: 11.3%;
+    }
+
+    .bottom-items {
+        margin-top: 0;
+    }
+
+    .img2 {
+        margin-top: 4.5rem;
+    }
+
+    .span2 {
+        margin-top: 4.5rem;
+    }
+
+    .p2 {
+        margin-top: 4.5rem;
+    }
+
+    .img3 {
+        margin-top: 8rem;
+    }
+
+    .span3 {
+        margin-top: 8rem;
+    }
+
+    .p3 {
+        margin-top: 8rem;
+    }
+
+    .img4 {
+        margin-top: 9rem !important;
+    }
+
+    .span4 {
+        margin-top: 8.8rem !important;
+    }
+
+    .p4 {
+        margin-top: 8.4rem !important;
+    }
+
+    .people {
+        grid-template-columns: 1fr !important;
+        margin: 5rem 5rem;
+    }
+
+    .people-member {
+        height: 35rem !important;
+    }
+
+    .other {
+        grid-template-columns: 1fr;
+        margin: 5rem;
+        grid-gap: 2.5%;
+        justify-items: center;
+    }
+
+    .register-field-sm {
+        left: 10%;
+    }
+
+    .register-field-sm form input[type=text],
+    .register-field-sm form input[type=email],
+    .register-field-sm form input[type=tel] {
+        margin-left: 4%;
+        width: 90%;
+    }
+
+    .register-field-sm form textarea {
+        height: 150px;
+    }
+
+    .register-field-sm form input[type="submit"] {
+        /*margin-left: 35% !important;*/
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 768px) {
+
+    .onelook {
+        font-size: 2rem;
+    }
+
+    .onlook-items span {
+        font-size: 1.7rem;
+    }
+
+    .onlook-items p {
+        font-size: 0.9rem;
+    }
+
+    .onlook-items {
+        grid-template-columns: 1fr !important;
+        grid-template-areas: 'img1' 'span1' 'p1' 'img2' 'span2' 'p2' 'img3' 'span3' 'p3' 'img4' 'span4' 'p4' !important;
+        width: 58%;
+        left: 11.3%;
+    }
+
+    .bottom-items {
+        margin-top: 0;
+    }
+
+    .img2 {
+        margin-top: 4.5rem;
+    }
+
+    .span2 {
+        margin-top: 4.5rem;
+    }
+
+    .p2 {
+        margin-top: 4.5rem;
+    }
+
+    .img3 {
+        margin-top: 8rem;
+    }
+
+    .span3 {
+        margin-top: 8rem;
+    }
+
+    .p3 {
+        margin-top: 8rem;
+    }
+
+    .img4 {
+        margin-top: 11rem;
+    }
+
+    .span4 {
+        margin-top: 11rem;
+    }
+
+    .p4 {
+        margin-top: 11rem;
+    }
+
+    .onelook {
+        margin-top: -5rem;
+    }
+
+    .people {
+        grid-template-columns: 1fr 1fr !important;
+        grid-gap: 3rem !important;
+        margin: 5rem 3.5rem;
+    }
+
+    .people-member {
+        height: 35rem !important;
+        padding: 0 1rem;
+    }
+
+    .other {
+        grid-template-columns: 1fr 1fr;
+        margin: 2.5rem;
+        grid-gap: 3rem !important;
+    }
+
+    .other-member {
+        margin-left: 2rem;
+    }
+
+    .register-field-sm form input[type=text],
+    .register-field-sm form input[type=email],
+    .register-field-sm form input[type=tel] {
+        margin-left: 4%;
+    }
+
+    .register-field-sm form textarea {
+        height: 200px;
+    }
+}
+
+@media (max-width: 1058px) and (min-width: 1024px){
+    .logo{
+        margin: 1.6rem 5.9rem;
+    }
+}
+
+@media (max-width: 1024px ) {
+    .logo {
+        margin: 1.5rem 0 0 4rem;
+    }
+
+    .people {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 30px;
+    }
+
+    .register-field-sm {
+        width: 60%;
+    }
+
+    .register-field-sm img {
+        /*margin-left: 43.4%;*/
+    }
+
+    form {
+        padding: 4rem 30%;
+    }
+
+    form input[type="submit"] {
+        /*margin-left: 43%;*/
+    }
+}
+
+
+@media (max-width: 1366px ) {
+    .header{
+        height:103px;
+    }
+
+    #item-1{
+        height: 100%;
+    }
+
+    .onlook-items {;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 'img1 img2' 'span1 span2' 'p1 p2' 'img3 img4' 'span3 span4' 'p3 p4';
+    }
+
+    .bottom-items {
+        margin-top: 7rem;
+    }
+
+    .people-img {
+        width: 16rem;
+    }
+
+    .people span {
+        font-size: 2rem;
+        top: -0.5rem;
+    }
+
+    .people p {
+        font-size: 1.15rem;
+    }
+
+    .main_nav ul {
+        font-size: 0.95rem;
+    }
+
+    .main_nav li {
+        width: 6.2rem;
+        height: 6.5rem;
+    }
+
+    .logo {
+        width: 24rem;
+    }
+
+    .onelook {
+        font-size: 2.6rem;
+    }
+
+    .onlook-items span {
+        font-size: 1.8rem;
+    }
+
+    #item-1 {
+        left: 48px;
+        width: 6.2rem;
+    }
+
+    .register-field-sm form textarea {
+        width: 90%;
+        margin-left: 5%;
+    }
+}
+
+@media (max-width: 936px){
+    .main_nav{
+        display: none;
+    }
+
+    label{
+        display: block;
+    }
+}
+
+@media (max-width: 684px){
+    label{
+        top: 1.2rem;
+        font-size: 2.6rem;
+    }
+
+    .logo{
+        width: 20rem;
+        margin: 1.5rem 0 0 1.3rem;
+    }
+}
+
+@media (max-width: 531px){
+    label{
+        left: 11%;
+    }
+}

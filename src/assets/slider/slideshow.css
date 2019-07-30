@@ -1,0 +1,86 @@
+body{
+    overflow-x: hidden;
+}
+
+#slider {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    margin: 75px 0;
+    padding: 0;
+    position: relative;
+}
+
+#slider .slides {
+    display: block;
+    width: 400%;
+    height: 400px;
+    margin: 0;
+    padding: 0;
+}
+
+#slider .slide {
+    float: left;
+    list-style-type: none;
+    width: 25%;
+    height: 400px;
+}
+
+#mid-box {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+}
+
+#next {
+    z-index: 10;
+    position: relative;
+    color: red;
+    float: right;
+    right: 5%;
+    top: 0;
+    font-size: 100px;
+}
+#next:hover{
+    cursor: pointer;
+}
+
+#previous {
+    z-index: 10;
+    position: relative;
+    color: red;
+    float: left;
+    left: 5%;
+    top: 0;
+    font-size: 100px;
+}
+#previous:hover{
+    cursor: pointer;
+}
+
+#slider-status {
+    border-radius: 1000px;
+    width: 72px;
+    height: 72px;
+    background: url("files/pause-icon.png") no-repeat center;
+    position: relative;
+    color: red;
+    left: 50%;
+    top: 0;
+    transition: transform 1s, opacity 1s;
+}
+
+#slider-status img {
+    position: absolute;
+    left: 50%;
+}
+
+#nums {
+    position: absolute;
+    top: 0;
+}
+
+#nums li {
+    color: red;
+    font-size: 20px;
+}

@@ -19,10 +19,17 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from .views import index_view
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('api.urls', namespace='api')),
+
+    # http://localhost:8000/api/<router-viewsets>
+    path('api/', include('tedx.api.urls', namespace='api')),
+
+    # http://localhost:8000/
+    path('', index_view, name='index'),
 ]
 
 if settings.DEBUG:
