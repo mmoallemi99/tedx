@@ -25,7 +25,8 @@
                                required id="id_phone_number">
 
 
-                        <textarea v-model="newSpeaker.bio" name="biography" cols="40" rows="10" maxlength="500"
+                        <textarea v-model="newSpeaker.bio" placeholder="Please Describe Yourself..." name="biography"
+                                  cols="40" rows="10" maxlength="500"
                                   required id="id_biography">
 
 </textarea>
@@ -37,7 +38,6 @@
                                                             'alert-error': formError,
                                                         }
                         ">
-
                         </div>
                     </form>
                 </div>
@@ -96,13 +96,13 @@
             //         for (let i = 0; i < cookies.length; i++) {
             //             let cookie = cookies[i].trim();
             //             Does this cookie string begin with the name we want?
-                        // if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                        //     cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                        //     break;
-                        // }
-                    // }
-                // }
-                // return cookieValue;
+            // if (cookie.substring(0, name.length + 1) === (name + '=')) {
+            //     cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            //     break;
+            // }
+            // }
+            // }
+            // return cookieValue;
             // }
         },
         // created() {

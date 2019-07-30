@@ -48,7 +48,7 @@
                         <p class="copyright"> Copyright ©2019 All rights reserved |
                             Reza Hasani
                             &
-                            <a style="color: mediumseagreen;" href="https://www.linkedin.com/in/mmoallemi99/"
+                            <a style="color: mediumseagreen; text-decoration: none;" href="https://www.linkedin.com/in/mmoallemi99/"
                                target="_blank">Mohammad
                                 Moallemi</a>
                         </p>
@@ -188,8 +188,6 @@
                         current_tab.css({'left': current_tab_location, 'transition': 'left 300ms'});
                     });
                 }
-
-                $('#id_professions').attr('placeholder', 'Please Describe Yourself...');
             });
         }
     }
