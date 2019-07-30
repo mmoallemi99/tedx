@@ -1,6 +1,6 @@
 from .base import *
 
-DEBUG = False
+DEBUG = True
 ADMINS = (
     ('Mohammad Moallemi', 'mohammadmoallemi@outlook.com'),
 )
@@ -15,5 +15,7 @@ DATABASES = {
         'NAME': 'tedx',
         'USER': 'tedx',
         'PASSWORD': 'F|_|ll$tackD3V',
+        'HOST': 'localhost',
+        'PORT': 5432,
     }
 }
