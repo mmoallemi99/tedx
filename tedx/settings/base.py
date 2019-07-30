@@ -38,7 +38,6 @@ INSTALLED_APPS = [
 
     # 3rd Party Apps
     'rest_framework',
-    # 'corsheaders',
 
 
     # Project Apps
@@ -57,8 +56,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-    # 'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
 ]
 
@@ -151,7 +148,6 @@ PHONENUMBER_DB_FORMAT = 'NATIONAL'
 PHONENUMBER_DEFAULT_REGION = 'IR'
 
 
-# CORS_ORIGIN_ALLOW_ALL = True
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',
@@ -161,5 +157,3 @@ REST_FRAMEWORK = {
     )
 }
 
-CSRF_USE_SESSIONS = True
-# CSRF_COOKIE_AGE = None
