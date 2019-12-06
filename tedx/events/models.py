@@ -24,15 +24,15 @@ class Staff(models.Model):
     last_name = models.CharField(max_length=30, verbose_name='last name')
 
     team_role_choices = [
-        ('Curation', 'curation'),
-        ('Organizer', 'organizer'),
-        ('Co Organizer', 'coorganizer'),
-        ('Marketing', 'marketing'),
-        ('Documentation', 'documentation'),
-        ('Creativity', 'creativity'),
-        ('Frontend Developer', 'frontend'),
-        ('Backend Developer', 'backend'),
-        ('UI Designer', 'designer'),
+        ('curation', 'Curation'),
+        ('organizer', 'Organizer'),
+        ('coorganizer', 'Co Organizer'),
+        ('marketing', 'Marketing'),
+        ('documentation', 'Documentation'),
+        ('creativity', 'Creativity'),
+        ('frontend', 'Frontend Developer'),
+        ('backend', 'Backend Developer'),
+        ('designer', 'UI Designer'),
     ]
     """
     Curation
