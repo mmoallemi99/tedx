@@ -33,6 +33,7 @@ class Staff(models.Model):
         ('frontend', 'Frontend Developer'),
         ('backend', 'Backend Developer'),
         ('designer', 'UI Designer'),
+        ('graphics', 'Graphic Designer'),
     ]
     """
     Curation
