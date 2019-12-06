@@ -23,11 +23,28 @@ class Staff(models.Model):
     first_name = models.CharField(max_length=30, verbose_name='first name')
     last_name = models.CharField(max_length=30, verbose_name='last name')
 
-    team_role_choices = [('arrangement', 'Arrangement'),
-                         ('designer', 'Designer'),
-                         ('programmer', 'Programmer'),
-                         ('talk team', 'Talk Team'),
-                         ('others', 'Others'), ]
+    team_role_choices = [
+        ('Curation', 'curation'),
+        ('Organizer', 'organizer'),
+        ('Co Organizer', 'coorganizer'),
+        ('Marketing', 'marketing'),
+        ('Documentation', 'documentation'),
+        ('Creativity', 'creativity'),
+        ('Frontend Developer', 'frontend'),
+        ('Backend Developer', 'backend'),
+        ('UI Designer', 'designer'),
+    ]
+    """
+    Curation
+    Organizer
+    CoOrganizer
+    Marketing
+    Documentation
+    Creativity
+    FrontEnd Developer
+    BackEnd Developer
+    UI Designer
+    """
 
     role = models.CharField(choices=team_role_choices, max_length=30,
                             help_text='team\'s way of association in team', default='others', null=True, blank=True)
