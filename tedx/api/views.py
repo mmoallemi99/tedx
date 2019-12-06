@@ -1,22 +1,22 @@
 from rest_framework import viewsets
 
 from tedx.events.serializers import (
-    EventSerializer,
+    # EventSerializer,
     StaffSerializer,
     SpeakerSerializer,
     SponsorSerializer,
 )
 from tedx.events.models import (
-    Event,
+    # Event,
     Staff,
     Speaker,
     Sponsor,
 )
 
 
-class EventViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Event.objects.all()
-    serializer_class = EventSerializer
+# class EventViewSet(viewsets.ReadOnlyModelViewSet):
+#     queryset = Event.objects.all()
+#     serializer_class = EventSerializer
 
 
 class StaffViewSet(viewsets.ReadOnlyModelViewSet):
@@ -24,7 +24,7 @@ class StaffViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = StaffSerializer
 
 
-class SpeakerViewSet(viewsets.ModelViewSet):
+class SpeakerViewSet(viewsets.ReadOnlyModelViewSet):
     authentication_classes = []
     permission_classes = []
     queryset = Speaker.objects.all()

@@ -3,23 +3,23 @@ from django.utils import timezone
 
 from phonenumber_field.modelfields import PhoneNumberField
 
-
-class Event(models.Model):
-    YEAR_CHOICES = []
-    for i in range(2019, timezone.now().year + 5):
-        YEAR_CHOICES.append((i, i))
-    name = models.CharField(max_length=50)
-    year = models.IntegerField(default=timezone.now().year, choices=YEAR_CHOICES,
-                               null=True, blank=True,
-                               help_text='year that event is being held')
-
-    def __str__(self):
-        return self.name
+#
+# class Event(models.Model):
+#     YEAR_CHOICES = []
+#     for i in range(2019, timezone.now().year + 5):
+#         YEAR_CHOICES.append((i, i))
+#     name = models.CharField(max_length=50)
+#     year = models.IntegerField(default=timezone.now().year, choices=YEAR_CHOICES,
+#                                null=True, blank=True,
+#                                help_text='year that event is being held')
+#
+#     def __str__(self):
+#         return self.name
 
 
 class Staff(models.Model):
-    event = models.ForeignKey(Event,
-                              on_delete=models.CASCADE, )
+    # event = models.ForeignKey(Event,
+    #                           on_delete=models.CASCADE, )
     first_name = models.CharField(max_length=30, verbose_name='first name')
     last_name = models.CharField(max_length=30, verbose_name='last name')
 
@@ -42,9 +42,9 @@ class Staff(models.Model):
 
 
 class Speaker(models.Model):
-    event = models.ForeignKey(Event,
-                              on_delete=models.CASCADE,
-                              help_text='Choose Your Event:', null=True, blank=True)
+    # event = models.ForeignKey(Event,
+    #                           on_delete=models.CASCADE,
+    #                           help_text='Choose Your Event:', null=True, blank=True)
 
     STATUS_CHOICES = [
         ('active', 'Active'),
@@ -66,9 +66,9 @@ class Speaker(models.Model):
 
 
 class Sponsor(models.Model):
-    event = models.ForeignKey(Event,
-                              on_delete=models.CASCADE,
-                              help_text='Choose Your Event:', )
+    # event = models.ForeignKey(Event,
+    #                           on_delete=models.CASCADE,
+    #                           help_text='Choose Your Event:', )
 
     sponsor_type_choices = [('financial', 'Financial'),
                             ('spiritual', 'Spiritual'),

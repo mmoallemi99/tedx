@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from .models import (
-    Event,
+    # Event,
     Staff,
     Speaker,
     Sponsor,
@@ -56,12 +56,12 @@ class SponsorSerializer(serializers.HyperlinkedModelSerializer):
         fields = '__all__'
 
 
-class EventSerializer(serializers.HyperlinkedModelSerializer):
-    url = serializers.HyperlinkedIdentityField(
-        view_name='api:event-detail',
-    )
-    staff_set = StaffSerializer(many=True, read_only=True)
-
-    class Meta:
-        model = Event
-        fields = '__all__'
+# class EventSerializer(serializers.HyperlinkedModelSerializer):
+#     url = serializers.HyperlinkedIdentityField(
+#         view_name='api:event-detail',
+#     )
+#     staff_set = StaffSerializer(many=True, read_only=True)
+#
+#     class Meta:
+#         model = Event
+#         fields = '__all__'

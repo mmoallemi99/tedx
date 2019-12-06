@@ -30,7 +30,10 @@ urlpatterns = [
 
     # http://localhost:8000/
     path('', index_view, name='index'),
+
+
 ]
 
 if settings.DEBUG:
+    urlpatterns += path('docs/', include('doc.urls', namespace='doc')),
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

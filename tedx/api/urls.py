@@ -3,7 +3,7 @@ from rest_framework import routers
 from django.urls import path, include
 
 from .views import (
-    EventViewSet,
+    # EventViewSet,
     StaffViewSet,
     SpeakerViewSet,
     SponsorViewSet,
@@ -12,7 +12,7 @@ from .views import (
 app_name = 'api'
 
 router = routers.DefaultRouter()
-router.register(r'events', EventViewSet)
+# router.register(r'events', EventViewSet)
 router.register(r'staffs', StaffViewSet)
 router.register(r'speakers', SpeakerViewSet)
 router.register(r'sponsors', SponsorViewSet)
