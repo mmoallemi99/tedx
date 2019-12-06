@@ -30,7 +30,7 @@ class Staff(models.Model):
                          ('others', 'Others'), ]
 
     role = models.CharField(choices=team_role_choices, max_length=30,
-                            help_text='team\'s way of association in team', default='others')
+                            help_text='team\'s way of association in team', default='others', null=True, blank=True)
 
     bio = models.TextField(blank=True, null=True, help_text='description about person e.g. role in team achievements')
     picture = models.ImageField(upload_to='pics/team/', help_text='team\'s picture')
