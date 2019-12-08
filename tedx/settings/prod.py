@@ -4,7 +4,13 @@ DEBUG = False
 ADMINS = (
     ('Mohammad Moallemi', 'mohammadmoallemi@outlook.com'),
 )
-ALLOWED_HOSTS = ['tedxui.ir', 'www.tedxui.ir', '185.204.102.163', ]
+ALLOWED_HOSTS = [
+    'tedxui.ir',
+    'www.tedxui.ir',
+    'tedxuniversityofisfahan.ir',
+    'www.tedxuniversityofisfahan.ir',
+    '185.204.102.163',
+]
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
